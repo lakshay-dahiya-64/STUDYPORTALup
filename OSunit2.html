@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>PROCESS MANAGEMENT</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="android-chrome-512x512.png">
+  </head>
+  <body>
+ <div class="pageheading">
+   PROCESS MANAGEMENT
+ </div>
+ <div class="pmcontent">
+   <h1><u>PROCESS</u></h1><br>
+   <p>A process is a program in execution. <br>
+      The execution of a process must progress in a sequential fashion,
+      at any time atmost 1 instruction is excecuted on behalf of the progress.</p>
+
+    <p>A process is more than a program code , it also includes the cureent
+       activity as represented by the value of the program counter and the contents
+       of the process stack, containing temporary data and section containing proper
+       variables.</p>
+    <h4><u>(EXTRA: WHAT IS A PROGRAM COUNTER?)</u> </h4>
+    <p>(A program counter is a register in a computer processor that contains the
+       address (location) of the instruction being executed at the current time.
+       As each instruction gets fetched, the program counter increases its stored
+       value by 1. After each instruction is fetched, the program counter points to
+       the next instruction in the sequence. When the computer restarts or is reset,
+       the program counter normally reverts to 0.)</p>
+    <p>A program is a passive entity, such as of a file stored on the disc,where a processo
+       is and active entity with a program counter. specifyng the next instruction to
+       execute. </p>
+<p> <u>Process state and its transition</u> As process executes,it change state
+       ,the state of a process is defined by the current activity of that
+       process.each process may be in one of the following state:</p>
+       <ul>
+         <li>NEW: The process is bieng created.</li>
+         <li>RUNNING: Process instructions are bieng executed.</li>
+         <li>WAITING: Process is waiting for some event to occur.</li>
+         <li>READY: The process is waiting to be assigned to a processor.</li>
+         <li>TERMINATED: The process had finished its execution. </li>
+       </ul>
+       <p>The process state diagram corresponding to these states as shown in given fig.</p>
+       <h1>figure1</h1>
+       <p>  <u><em>PROCESS CONTROL BLOCK(PCB)</em> </u> Each process is represented in the operating system by a process control block.It is also called as Task Control Block. A process control control block is shown in the fig below </p>
+          <h1>figure2</h1>
+       <p>A PCB contains many pieces of information associated with a specific process as shown in the above fig. <br> these are defined as:</p>
+       <ul>
+         <li>PROCESS STATE: It represent the (current)state of a process which may be now ready,running etc.</li>
+         <li>PROGRAM COUNTER: The counter indicate the address of the next instruction to be added for the process.</li>
+         <li>CPU REGISTER: They include accumulator,index,register,stack pointer and other general purpose registers.</li>
+
+       </ul>
+       <p>These registers are used to store different information about a process when an interrupt occurs or some input/output event occurs.</p>
+<h4><u>(EXTRA: WHAT IS A INTERRUPT?)</u> </h4>
+<p>(An interrupt is a signal which is sent from a device or from software to the operating system. The interrupt signal causes the operating system to temporarily stop what it is doing and 'service' the interrupt.)</p>
+<p> <u>The types of information are:</u></p>
+<ul>
+  <li>CPU SCHEDULING INFORMATION: It includes priorites pointers to schedule queues and other scheduling parameters.</li>
+  <li>MEMORY MANAGEMENT INFORMATION: It contains information about page tables,segment tables,limit and base registers etc. which can take care of memory management. </li>
+  <li>ACCOUNTING INFORMATION: It includes information amount of CPU and real time use, time limit, account number or process number etc.</li>
+  <li>INPUT/OUTPUT STATUS INFORMATION: This information includes the list of input output devices allocated to the process,list of open files etc.</li>
+</ul>
+<p> <u> CONTEXT SWITCHING </u>   </p>
+<p>An interrupt cause the operating system to change a CPU from its current task. As process such operation happens frequently on general purpose computer system. This interrupt can occur when a high priority process occurs or shortest process comes and the CPU needs to run these new process
+   instead of currently running processing. When an interrupt occurs the system needs to save the current context of the process on the cpu so that it can restore the context later on.  </p>
+   <p>Switching the CPU to another process requires a performing state, save of the current process and a state restore of a different process. </p>
+   <p>This task is known as context switch. when a context switch occurs, the kernal save the context of the old process in its PCB and loads the save context of the new process schedule to run.</p>
+   <p>context switch time is pure over head, because of the system does no useful work while switching</p>
+   <p>context switch time varies from machine to machine depending on the memory speed,the number of registers that must be copied and the hardware spot of machine.</p>
+   <p> <u> DISPATCHING LATENCY:- </u>Switching of processes is done by dispatcher and the time it takes is known as dispatch latency.</p>
+<p><u>Thread:- </u> A thread is a basic unit of CPU utilization, it comprises a thread id ,a program counter a resistor set and a stack. It shares with other thread belonging to the same process its codesection,datasection and other operating system resources, such as open files and signals. </p>
+<p>A traditional process has a single thread of control. If a process has multiple threads of control it can perform multiple process tasks at a time.</p>
+<ul>
+  <p> <u> THREAD STATE:- </u>There are one of 7 state in which a thread can be in these states </p>
+  <li>Create a creation</li>
+  <li>Ready</li>
+  <li>Running</li>
+  <li>Waiting</li>
+  <li>Delayed</li>
+  <li>Blocked</li>
+  <li>Finished</li>
+</ul>
+<h1>Figure3</h1>
+<p>The description of these states is given as:</p>
+<ol>
+  <li> Then an application is to be processed, then its create a thread.</li>
+  <li>It is then allocated to the required resources and it comes in ready state.</li>
+  <li>When the thread schedulr assign the thread with the processor or CPU then it comes in running state.</li>
+  <li>When the process needs to run some other event , then the running thread goes to waiting state.</li>
+  <li>when the application has the capability to delay the processing of the thread, then the thread goes to sleep mode or delayed state. Example:Snoozing of alarm.</li>
+  <li>When thread generate I/O request then it goes to blocked state.</li>
+  <li>When a thread completes its work,then it goes to finished state.</li>
+</ol>
+
+<ul>
+  <p>Benifits/Advantages of threads:-</p>
+  <li>Threads minimise the context switching time.</li>
+  <li>Efficient communication between thread.</li>
+  <li>Use of threads provides concurrancy with in a process.</li>
+  <li>Parallel programming technique are easier to implement.</li>
+  <li>Resources can be shared between all the threads within a process.</li>
+  <li>It is non-economical to create and switch threads.</li>
+</ul>
+ </div>
+  </body>
+</html>
